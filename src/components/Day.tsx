@@ -72,12 +72,12 @@ function Day({
   const textStyle = isSelected
     ? { color: '#fff', ...selectedTextStyle }
     : isToday
-    ? {
-        ...calendarTextStyle,
-        color: selectedItemColor || '#0047FF',
-        ...todayTextStyle,
-      }
-    : calendarTextStyle;
+      ? {
+          ...calendarTextStyle,
+          color: selectedItemColor || '#0047FF',
+          ...todayTextStyle,
+        }
+      : calendarTextStyle;
 
   const rangeRootBackground = addColorAlpha(selectedItemColor, 0.15);
 

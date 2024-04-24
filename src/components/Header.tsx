@@ -32,9 +32,9 @@ const Header = ({ buttonPrevIcon, buttonNextIcon }: HeaderProps) => {
         calendarView === 'day'
           ? onChangeMonth(-1)
           : calendarView === 'month'
-          ? onChangeYear(currentYear - 1)
-          : calendarView === 'year' &&
-            onChangeYear(currentYear - YEAR_PAGE_SIZE)
+            ? onChangeYear(currentYear - 1)
+            : calendarView === 'year' &&
+              onChangeYear(currentYear - YEAR_PAGE_SIZE)
       }
       testID="btn-prev"
       accessibilityRole="button"
@@ -64,9 +64,9 @@ const Header = ({ buttonPrevIcon, buttonNextIcon }: HeaderProps) => {
         calendarView === 'day'
           ? onChangeMonth(1)
           : calendarView === 'month'
-          ? onChangeYear(currentYear + 1)
-          : calendarView === 'year' &&
-            onChangeYear(currentYear + YEAR_PAGE_SIZE)
+            ? onChangeYear(currentYear + 1)
+            : calendarView === 'year' &&
+              onChangeYear(currentYear + YEAR_PAGE_SIZE)
       }
       testID="btn-next"
       accessibilityRole="button"
