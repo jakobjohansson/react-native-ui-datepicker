@@ -181,7 +181,6 @@ const customComparator = (
     prevProps.inRange === nextProps.inRange &&
     prevProps.leftCrop === nextProps.leftCrop &&
     prevProps.rightCrop === nextProps.rightCrop &&
-    prevProps.onSelectDate === nextProps.onSelectDate &&
     prevProps.height === nextProps.height &&
     isEqual(prevProps.theme, nextProps.theme)
   );
