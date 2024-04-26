@@ -191,7 +191,7 @@ export default function App() {
               endDate={range.endDate}
               initialView="time"
               dates={dates}
-              //minDate={dayjs().startOf('day')}
+              minDate={dayjs()}
               //maxDate={dayjs().add(3, 'day').endOf('day')}
               //firstDayOfWeek={1}
               displayFullDays

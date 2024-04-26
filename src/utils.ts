@@ -233,10 +233,10 @@ const generateDayObject = (
 ) => {
   let disabled = false;
   if (minDate) {
-    disabled = date < getDate(minDate);
+    disabled = date.isBefore(minDate, 'day');
   }
   if (maxDate && !disabled) {
-    disabled = date > getDate(maxDate);
+    disabled = date.isAfter(maxDate, 'day');
   }
   return {
     text: day.toString(),
