@@ -40,7 +40,7 @@ const TimeSelector = () => {
         <View style={styles.wheelContainer}>
           <WheelPicker
             selectedIndex={hours.findIndex((hr) => hr === hour)}
-            options={hours.map((hr) => `${hr}`)}
+            options={hours.map((hr) => `${hr}`.padStart(2, '0'))}
             itemTextStyle={{
               ...styles.timePickerText,
               ...theme?.timePickerTextStyle,
@@ -59,7 +59,7 @@ const TimeSelector = () => {
         <View style={styles.wheelContainer}>
           <WheelPicker
             selectedIndex={minutes.findIndex((m) => m === minute)}
-            options={minutes.map((m) => `${m}`)}
+            options={minutes.map((m) => `${m}`.padStart(2, '0'))}
             itemTextStyle={{
               ...styles.timePickerText,
               ...theme?.timePickerTextStyle,
