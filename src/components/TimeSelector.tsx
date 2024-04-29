@@ -11,10 +11,12 @@ function createNumberList(num: number) {
 
 const hours = createNumberList(24);
 const minutes = createNumberList(60);
-const formattedHours = hours.map((hr) => `${hr}`.padStart(2, '0'))
-const formattedMinutes = minutes.map((m) => `${m}`.padStart(2, '0'))
+const formattedHours = hours.map((hr) => `${hr}`.padStart(2, '0'));
+const formattedMinutes = minutes.map((m) => `${m}`.padStart(2, '0'));
 
 const TimeSelector = () => {
+  const [forceHourRerender, setForceHourRerender] = React.useState(false);
+  const [forceMinuteRerender, setForceMinuteRerender] = React.useState(false);
   const { date, onSelectDate, theme, minDate } = useCalendarContext();
   const { hour, minute } = getParsedDate(date);
   const selectedHour = hours.findIndex((hr) => hr === hour);
@@ -26,6 +28,8 @@ const TimeSelector = () => {
 
       if (minDate && newDate.isBefore(minDate)) {
         onSelectDate(getFormated(minDate));
+        setForceHourRerender((f) => !f);
+        setForceMinuteRerender((f) => !f);
         return;
       }
 
@@ -40,6 +44,7 @@ const TimeSelector = () => {
 
       if (minDate && newDate.isBefore(minDate)) {
         onSelectDate(getFormated(minDate));
+        setForceMinuteRerender((f) => !f);
         return;
       }
 
@@ -48,6 +53,8 @@ const TimeSelector = () => {
     [date, onSelectDate, minDate]
   );
 
+  console.log(formattedMinutes);
+
   return (
     <View style={styles.container} testID="time-selector">
       <View
@@ -55,6 +62,7 @@ const TimeSelector = () => {
       >
         <View style={styles.wheelContainer}>
           <WheelPicker
+            key={forceHourRerender ? 'force-hour' : 'rerender-hour'}
             selectedIndex={selectedHour}
             options={formattedHours}
             itemTextStyle={{
@@ -74,6 +82,7 @@ const TimeSelector = () => {
         </Text>
         <View style={styles.wheelContainer}>
           <WheelPicker
+            key={forceMinuteRerender ? 'force-minute' : 'rerender-minute'}
             selectedIndex={selectedMinute}
             options={formattedMinutes}
             itemTextStyle={{
