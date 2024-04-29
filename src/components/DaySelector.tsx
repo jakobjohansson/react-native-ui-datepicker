@@ -164,6 +164,13 @@ const DaySelector = () => {
 
   const handleSelectDate = useCallback(
     (date: string) => {
+      const minimumDate = getDate(minDate);
+
+      if (minDate && getDate(date).isBefore(minimumDate)) {
+        onSelectDate(getFormated(minimumDate));
+        return;
+      }
+
       const newDate = getDate(date).hour(hour).minute(minute);
 
       onSelectDate(getFormated(newDate));
