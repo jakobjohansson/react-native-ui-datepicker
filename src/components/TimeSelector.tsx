@@ -11,25 +11,41 @@ function createNumberList(num: number) {
 
 const hours = createNumberList(24);
 const minutes = createNumberList(60);
+const formattedHours = hours.map((hr) => `${hr}`.padStart(2, '0'))
+const formattedMinutes = minutes.map((m) => `${m}`.padStart(2, '0'))
 
 const TimeSelector = () => {
-  const { date, onSelectDate, theme } = useCalendarContext();
+  const { date, onSelectDate, theme, minDate } = useCalendarContext();
   const { hour, minute } = getParsedDate(date);
+  const selectedHour = hours.findIndex((hr) => hr === hour);
+  const selectedMinute = minutes.findIndex((m) => m === minute);
 
   const handleChangeHour = useCallback(
     (value: number) => {
       const newDate = getDate(date).hour(value);
+
+      if (minDate && newDate.isBefore(minDate)) {
+        onSelectDate(getFormated(minDate));
+        return;
+      }
+
       onSelectDate(getFormated(newDate));
     },
-    [date, onSelectDate]
+    [date, onSelectDate, minDate]
   );
 
   const handleChangeMinute = useCallback(
     (value: number) => {
       const newDate = getDate(date).minute(value);
+
+      if (minDate && newDate.isBefore(minDate)) {
+        onSelectDate(getFormated(minDate));
+        return;
+      }
+
       onSelectDate(getFormated(newDate));
     },
-    [date, onSelectDate]
+    [date, onSelectDate, minDate]
   );
 
   return (
@@ -39,8 +55,8 @@ const TimeSelector = () => {
       >
         <View style={styles.wheelContainer}>
           <WheelPicker
-            selectedIndex={hours.findIndex((hr) => hr === hour)}
-            options={hours.map((hr) => `${hr}`.padStart(2, '0'))}
+            selectedIndex={selectedHour}
+            options={formattedHours}
             itemTextStyle={{
               ...styles.timePickerText,
               ...theme?.timePickerTextStyle,
@@ -58,8 +74,8 @@ const TimeSelector = () => {
         </Text>
         <View style={styles.wheelContainer}>
           <WheelPicker
-            selectedIndex={minutes.findIndex((m) => m === minute)}
-            options={minutes.map((m) => `${m}`.padStart(2, '0'))}
+            selectedIndex={selectedMinute}
+            options={formattedMinutes}
             itemTextStyle={{
               ...styles.timePickerText,
               ...theme?.timePickerTextStyle,
