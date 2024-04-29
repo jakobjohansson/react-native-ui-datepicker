@@ -53,8 +53,6 @@ const TimeSelector = () => {
     [date, onSelectDate, minDate]
   );
 
-  console.log(formattedMinutes);
-
   return (
     <View style={styles.container} testID="time-selector">
       <View
