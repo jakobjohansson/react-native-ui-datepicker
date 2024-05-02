@@ -19,6 +19,7 @@ const Header = ({ buttonPrevIcon, buttonNextIcon }: HeaderProps) => {
     calendarView,
     setCalendarView,
     theme,
+    confirmTimeText,
     locale,
     timePicker,
   } = useCalendarContext();
@@ -150,9 +151,23 @@ const Header = ({ buttonPrevIcon, buttonNextIcon }: HeaderProps) => {
           accessibilityRole="button"
           accessibilityLabel={dayjs(date).format('HH:mm')}
         >
-          <View style={[styles.textContainer, theme?.headerTextContainerStyle]}>
-            <Text style={[styles.text, theme?.headerTextStyle]}>
-              {dayjs(date).format('HH:mm')}
+          <View
+            style={[
+              styles.textContainer,
+              theme?.headerTextContainerStyle,
+              theme?.headerTimeContainerStyle,
+            ]}
+          >
+            <Text
+              style={[
+                styles.text,
+                theme?.headerTextStyle,
+                theme?.headerTimeTextStyle,
+              ]}
+            >
+              {calendarView === 'time' && confirmTimeText
+                ? confirmTimeText
+                : dayjs(date).format('HH:mm')}
             </Text>
           </View>
         </Pressable>

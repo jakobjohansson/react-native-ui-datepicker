@@ -208,6 +208,9 @@ export default function App() {
               todayContainerStyle={{
                 borderWidth: 1,
               }}
+              headerTimeTextStyle={{color: theme?.activeTextColor}}
+              confirmTimeText="Confirm time"
+              headerTimeContainerStyle={{backgroundColor: theme?.mainColor, paddingHorizontal: 10, borderRadius: 8}}
             />
             <View style={styles.footer}>
               {mode === 'single' ? (
