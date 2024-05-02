@@ -8,7 +8,7 @@ import YearSelector from './YearSelector';
 import MonthSelector from './MonthSelector';
 import DaySelector from './DaySelector';
 import TimeSelector from './TimeSelector';
-import { CALENDAR_HEIGHT } from '../enums';
+import { CALENDAR_HEIGHT, TIME_PICKER_HEIGHT } from '../enums';
 
 const CalendarView: Record<CalendarViews, ReactNode> = {
   year: <YearSelector />,
@@ -22,14 +22,14 @@ interface PropTypes extends HeaderProps {
 }
 
 const Calendar = ({ buttonPrevIcon, buttonNextIcon, height }: PropTypes) => {
-  const { calendarView } = useCalendarContext();
+  const { calendarView, datePicker } = useCalendarContext();
 
   const styles = StyleSheet.create({
     container: {
       width: '100%',
     },
     calendarContainer: {
-      height: height || CALENDAR_HEIGHT,
+      height: height || datePicker ? CALENDAR_HEIGHT : TIME_PICKER_HEIGHT,
       alignItems: 'center',
     },
   });
@@ -42,7 +42,12 @@ const Calendar = ({ buttonPrevIcon, buttonNextIcon, height }: PropTypes) => {
           buttonNextIcon={buttonNextIcon}
         />
       ) : null} */}
-      <Header buttonPrevIcon={buttonPrevIcon} buttonNextIcon={buttonNextIcon} />
+      {datePicker ? (
+        <Header
+          buttonPrevIcon={buttonPrevIcon}
+          buttonNextIcon={buttonNextIcon}
+        />
+      ) : null}
       <View style={styles.calendarContainer}>{CalendarView[calendarView]}</View>
     </View>
   );

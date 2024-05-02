@@ -10,3 +10,5 @@ export enum CalendarActionKind {
 }
 
 export const CALENDAR_HEIGHT = 300;
+
+export const TIME_PICKER_HEIGHT = 280;

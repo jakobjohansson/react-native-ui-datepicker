@@ -8,4 +8,5 @@ export declare enum CalendarActionKind {
     CHANGE_SELECTED_MULTIPLE = "CHANGE_SELECTED_MULTIPLE"
 }
 export declare const CALENDAR_HEIGHT = 300;
+export declare const TIME_PICKER_HEIGHT = 280;
 //# sourceMappingURL=enums.d.ts.map

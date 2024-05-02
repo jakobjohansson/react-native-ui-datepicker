@@ -78,6 +78,7 @@ export interface DatePickerBaseProps {
     firstDayOfWeek?: number;
     displayFullDays?: boolean;
     timePicker?: boolean;
+    datePicker?: boolean;
     date?: DateType;
     dates?: DateType[];
     startDate?: DateType;
