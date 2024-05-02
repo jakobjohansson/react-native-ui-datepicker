@@ -5,26 +5,50 @@ import { CALENDAR_HEIGHT } from '../enums';
 import { getParsedDate, getDate, getFormated } from '../utils';
 import WheelPicker from 'react-native-wheely';
 
-function createNumberList(num: number) {
-  return new Array(num).fill(0).map((_, index) => index);
+function createNumberList(num: number, interval = 1) {
+  return new Array(num / interval).fill(0).map((_, index) => index * interval);
 }
 
 const hours = createNumberList(24);
-const minutes = createNumberList(60);
-const formattedHours = hours.map((hr) => `${hr}`.padStart(2, '0'));
-const formattedMinutes = minutes.map((m) => `${m}`.padStart(2, '0'));
 
 const TimeSelector = () => {
   const [forceHourRerender, setForceHourRerender] = React.useState(false);
   const [forceMinuteRerender, setForceMinuteRerender] = React.useState(false);
-  const { date, onSelectDate, theme, minDate } = useCalendarContext();
+  const { date, onSelectDate, theme, minDate, minuteInterval } =
+    useCalendarContext();
+  const minutes = React.useMemo(
+    () => createNumberList(60, minuteInterval),
+    [minuteInterval]
+  );
+  const formattedHours = hours.map((hr) => `${hr}`.padStart(2, '0'));
+  const formattedMinutes = minutes.map((m) => `${m}`.padStart(2, '0'));
   const { hour, minute } = getParsedDate(date);
   const selectedHour = hours.findIndex((hr) => hr === hour);
-  const selectedMinute = minutes.findIndex((m) => m === minute);
+
+  // Get the closest index of the selected minute
+  const selectedMinute = minutes.reduce((acc, mn, index) => {
+    if (mn === minute) {
+      return index;
+    }
+
+    const diff = Math.abs(mn - minutes[acc]);
+
+    if (diff < Math.abs(minute - minutes[acc])) {
+      return index;
+    }
+
+    return acc;
+  }, 0);
 
   const handleChangeHour = useCallback(
     (value: number) => {
-      const newDate = getDate(date).hour(value);
+      const hr = hours[value];
+
+      if (hr == null) {
+        return;
+      }
+
+      const newDate = getDate(date).hour(hr);
 
       if (minDate && newDate.isBefore(minDate)) {
         onSelectDate(getFormated(minDate));
@@ -40,7 +64,13 @@ const TimeSelector = () => {
 
   const handleChangeMinute = useCallback(
     (value: number) => {
-      const newDate = getDate(date).minute(value);
+      const mn = minutes[value];
+
+      if (mn == null) {
+        return;
+      }
+
+      const newDate = getDate(date).minute(mn);
 
       if (minDate && newDate.isBefore(minDate)) {
         onSelectDate(getFormated(minDate));

@@ -91,6 +91,7 @@ export interface DatePickerBaseProps {
   datePicker?: boolean;
   date?: DateType;
   dates?: DateType[];
+  minuteInterval?: number;
   startDate?: DateType;
   endDate?: DateType;
   onChange?: SingleChange | RangeChange | MultiChange;
