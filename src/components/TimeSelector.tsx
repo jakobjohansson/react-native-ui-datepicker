@@ -31,9 +31,15 @@ const TimeSelector = () => {
       return index;
     }
 
-    const diff = Math.abs(mn - minutes[acc]);
+    const accMinutes = minutes[acc];
 
-    if (diff < Math.abs(minute - minutes[acc])) {
+    if (accMinutes == null) {
+      return index;
+    }
+
+    const diff = Math.abs(mn - accMinutes);
+
+    if (diff < Math.abs(minute - accMinutes)) {
       return index;
     }
 
