@@ -50,7 +50,7 @@ const Calendar = ({ buttonPrevIcon, buttonNextIcon, height }: PropTypes) => {
         />
       ) : null}
       <View style={styles.calendarContainer}>{CalendarView[calendarView]}</View>
-      {timePicker ? <Footer /> : null}
+      {timePicker && datePicker ? <Footer /> : null}
     </View>
   );
 };
