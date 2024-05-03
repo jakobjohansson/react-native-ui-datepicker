@@ -23,18 +23,8 @@ export const Footer = () => {
     >
       <View style={styles.footerContainer}>
         <Text style={styles.text}>{timeText}</Text>
-        <View
-          style={[
-            styles.textContainer,
-            theme?.footerTimeContainerStyle,
-          ]}
-        >
-          <Text
-            style={[
-              styles.text,
-              theme?.footerTimeTextStyle,
-            ]}
-          >
+        <View style={[styles.textContainer, theme?.footerTimeContainerStyle]}>
+          <Text style={[styles.text, theme?.footerTimeTextStyle]}>
             {calendarView === 'time' && confirmTimeText
               ? confirmTimeText
               : dayjs(date).format('HH:mm')}
@@ -48,7 +38,7 @@ export const Footer = () => {
 const styles = StyleSheet.create({
   footerContainer: {
     flexDirection: 'row',
-    padding: 5,
+    paddingHorizontal: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
