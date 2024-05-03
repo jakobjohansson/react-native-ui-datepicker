@@ -44,8 +44,8 @@ export type CalendarThemeProps = {
   selectedItemColor?: string;
   timePickerContainerStyle?: ViewStyle;
   timePickerTextStyle?: TextStyle;
-  headerTimeContainerStyle?: ViewStyle;
-  headerTimeTextStyle?: TextStyle;
+  footerTimeContainerStyle?: ViewStyle;
+  footerTimeTextStyle?: TextStyle;
 };
 
 export type HeaderProps = {
@@ -98,4 +98,5 @@ export interface DatePickerBaseProps {
   initialView?: CalendarViews;
   height?: number;
   confirmTimeText?: string;
+  timeText?: string;
 }

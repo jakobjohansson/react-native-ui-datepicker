@@ -7,6 +7,7 @@ export interface CalendarContextType extends DatePickerBaseProps {
     firstDayOfWeek: number;
     theme: CalendarThemeProps;
     confirmTimeText?: string;
+    timeText?: string;
     calendarView: CalendarViews;
     currentDate: DateType;
     currentYear: number;

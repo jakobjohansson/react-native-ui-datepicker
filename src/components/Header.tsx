@@ -10,8 +10,6 @@ const arrow_right = require('../assets/images/arrow_right.png');
 
 const Header = ({ buttonPrevIcon, buttonNextIcon }: HeaderProps) => {
   const {
-    mode,
-    date,
     currentDate,
     currentYear,
     onChangeMonth,
@@ -19,9 +17,7 @@ const Header = ({ buttonPrevIcon, buttonNextIcon }: HeaderProps) => {
     calendarView,
     setCalendarView,
     theme,
-    confirmTimeText,
     locale,
-    timePicker,
   } = useCalendarContext();
 
   const currentMonthText = dayjs(currentDate).locale(locale).format('MMMM');
@@ -143,35 +139,7 @@ const Header = ({ buttonPrevIcon, buttonNextIcon }: HeaderProps) => {
         {calendarView !== 'year' ? monthSelector : null}
         {yearSelector()}
       </View>
-      {timePicker && mode === 'single' && calendarView !== 'year' ? (
-        <Pressable
-          onPress={() =>
-            setCalendarView(calendarView === 'time' ? 'day' : 'time')
-          }
-          accessibilityRole="button"
-          accessibilityLabel={dayjs(date).format('HH:mm')}
-        >
-          <View
-            style={[
-              styles.textContainer,
-              theme?.headerTextContainerStyle,
-              theme?.headerTimeContainerStyle,
-            ]}
-          >
-            <Text
-              style={[
-                styles.text,
-                theme?.headerTextStyle,
-                theme?.headerTimeTextStyle,
-              ]}
-            >
-              {calendarView === 'time' && confirmTimeText
-                ? confirmTimeText
-                : dayjs(date).format('HH:mm')}
-            </Text>
-          </View>
-        </Pressable>
-      ) : null}
+      
     </>
   );
 

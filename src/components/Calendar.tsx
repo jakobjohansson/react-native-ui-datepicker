@@ -9,6 +9,7 @@ import MonthSelector from './MonthSelector';
 import DaySelector from './DaySelector';
 import TimeSelector from './TimeSelector';
 import { CALENDAR_HEIGHT, TIME_PICKER_HEIGHT } from '../enums';
+import { Footer } from './Footer';
 
 const CalendarView: Record<CalendarViews, ReactNode> = {
   year: <YearSelector />,
@@ -49,6 +50,7 @@ const Calendar = ({ buttonPrevIcon, buttonNextIcon, height }: PropTypes) => {
         />
       ) : null}
       <View style={styles.calendarContainer}>{CalendarView[calendarView]}</View>
+      <Footer />
     </View>
   );
 };

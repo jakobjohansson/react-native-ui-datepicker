@@ -34,7 +34,7 @@ export default function App() {
   const [mode, setMode] = useState<ModeType>('single');
   const [timePicker, setTimePicker] = useState(true);
 
-  const [date, setDate] = useState<DateType | undefined>();
+  const [date, setDate] = useState<DateType | undefined>(dayjs("2024-04-29 10:01:00Z"));
   const [range, setRange] = React.useState<{
     startDate: DateType;
     endDate: DateType;
@@ -191,11 +191,13 @@ export default function App() {
               endDate={range.endDate}
               initialView="time"
               dates={dates}
-              minDate={dayjs()}
+              // minDate={dayjs("2024-04-29 08:01:00Z")}
               //maxDate={dayjs().add(3, 'day').endOf('day')}
               //firstDayOfWeek={1}
               displayFullDays
               timePicker={timePicker}
+              datePicker={true}
+              minuteInterval={10}
               onChange={onChange}
               headerButtonColor={theme?.mainColor}
               selectedItemColor={theme?.mainColor}
@@ -208,9 +210,10 @@ export default function App() {
               todayContainerStyle={{
                 borderWidth: 1,
               }}
-              headerTimeTextStyle={{color: theme?.activeTextColor}}
+              footerTimeTextStyle={{color: theme?.activeTextColor}}
               confirmTimeText="Confirm time"
-              headerTimeContainerStyle={{backgroundColor: theme?.mainColor, paddingHorizontal: 10, borderRadius: 8}}
+              timeText="Tid"
+              footerTimeContainerStyle={{backgroundColor: theme?.mainColor, paddingHorizontal: 10, borderRadius: 8}}
             />
             <View style={styles.footer}>
               {mode === 'single' ? (

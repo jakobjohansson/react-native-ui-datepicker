@@ -38,8 +38,8 @@ export type CalendarThemeProps = {
     selectedItemColor?: string;
     timePickerContainerStyle?: ViewStyle;
     timePickerTextStyle?: TextStyle;
-    headerTimeContainerStyle?: ViewStyle;
-    headerTimeTextStyle?: TextStyle;
+    footerTimeContainerStyle?: ViewStyle;
+    footerTimeTextStyle?: TextStyle;
 };
 export type HeaderProps = {
     buttonPrevIcon?: ReactNode;
@@ -88,5 +88,6 @@ export interface DatePickerBaseProps {
     initialView?: CalendarViews;
     height?: number;
     confirmTimeText?: string;
+    timeText?: string;
 }
 //# sourceMappingURL=types.d.ts.map
