@@ -23,7 +23,7 @@ interface PropTypes extends HeaderProps {
 }
 
 const Calendar = ({ buttonPrevIcon, buttonNextIcon, height }: PropTypes) => {
-  const { calendarView, datePicker } = useCalendarContext();
+  const { calendarView, datePicker, timePicker } = useCalendarContext();
 
   const styles = StyleSheet.create({
     container: {
@@ -50,7 +50,7 @@ const Calendar = ({ buttonPrevIcon, buttonNextIcon, height }: PropTypes) => {
         />
       ) : null}
       <View style={styles.calendarContainer}>{CalendarView[calendarView]}</View>
-      <Footer />
+      {timePicker ? <Footer /> : null}
     </View>
   );
 };
