@@ -40,6 +40,7 @@ export type CalendarThemeProps = {
     timePickerTextStyle?: TextStyle;
     footerTimeContainerStyle?: ViewStyle;
     footerTimeTextStyle?: TextStyle;
+    timeTextStyle?: TextStyle;
 };
 export type HeaderProps = {
     buttonPrevIcon?: ReactNode;
