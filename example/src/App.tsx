@@ -213,6 +213,7 @@ export default function App() {
               footerTimeTextStyle={{color: theme?.activeTextColor}}
               confirmTimeText="Confirm time"
               timeText="Tid"
+              timeTextStyle={{ color: '#000' }}
               footerTimeContainerStyle={{backgroundColor: theme?.mainColor, paddingHorizontal: 10, borderRadius: 8}}
             />
             <View style={styles.footer}>

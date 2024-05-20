@@ -22,7 +22,7 @@ export const Footer = () => {
       accessibilityLabel={dayjs(date).format('HH:mm')}
     >
       <View style={styles.footerContainer}>
-        <Text style={styles.text}>{timeText}</Text>
+        <Text style={[styles.text, theme?.timeTextStyle]}>{timeText}</Text>
         <View style={[styles.textContainer, theme?.footerTimeContainerStyle]}>
           <Text style={[styles.text, theme?.footerTimeTextStyle]}>
             {calendarView === 'time' && confirmTimeText
