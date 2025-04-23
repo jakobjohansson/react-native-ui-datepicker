@@ -99,6 +99,7 @@ const TimeSelector = () => {
             key={forceHourRerender ? 'force-hour' : 'rerender-hour'}
             selectedIndex={selectedHour}
             options={formattedHours}
+            selectedIndicatorStyle={theme?.selectedTimeIndicatorStyle}
             itemTextStyle={{
               ...styles.timePickerText,
               ...theme?.timePickerTextStyle,
@@ -119,6 +120,7 @@ const TimeSelector = () => {
             key={forceMinuteRerender ? 'force-minute' : 'rerender-minute'}
             selectedIndex={selectedMinute}
             options={formattedMinutes}
+            selectedIndicatorStyle={theme?.selectedTimeIndicatorStyle}
             itemTextStyle={{
               ...styles.timePickerText,
               ...theme?.timePickerTextStyle,

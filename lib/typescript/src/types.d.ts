@@ -41,6 +41,7 @@ export type CalendarThemeProps = {
     footerTimeContainerStyle?: ViewStyle;
     footerTimeTextStyle?: TextStyle;
     timeTextStyle?: TextStyle;
+    selectedTimeIndicatorStyle?: ViewStyle;
 };
 export type HeaderProps = {
     buttonPrevIcon?: ReactNode;
