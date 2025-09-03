@@ -34,7 +34,8 @@
     "prepack": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install"
+    "bootstrap": "yarn example && yarn install",
+    "postinstall": "patch-package"
   },
   "keywords": [
     "react-native",
@@ -175,6 +176,7 @@
   "dependencies": {
     "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
+    "patch-package": "^8.0.0",
     "react-native-wheely": "^0.6.0",
     "uninstall": "^0.0.0"
   },
