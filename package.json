@@ -73,7 +73,6 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@evilmartians/lefthook": "^1.2.2",
     "@react-native-community/eslint-config": "^3.0.2",
-    "@release-it/conventional-changelog": "^8.0.1",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react-native": "^12.3.2",
     "@types/jest": "^29.5.12",
@@ -93,7 +92,6 @@
     "react-native": "^0.74.0",
     "react-native-builder-bob": "^0.23.2",
     "react-test-renderer": "^18.2.0",
-    "release-it": "^17.2.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.4.5"
   },
