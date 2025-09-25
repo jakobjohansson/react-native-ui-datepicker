@@ -204,18 +204,29 @@ const DateTimePicker = (
             date: newDate,
           });
         } else if (mode === 'range') {
-          const sd = state.startDate;
-          const ed = state.endDate;
+          const startDate = state.startDate;
+          const endDate = state.endDate;
           let isStart: boolean = true;
 
-          if (sd && !ed && dateToUnix(date) >= dateToUnix(sd!)) {
+          if (
+            startDate &&
+            !endDate &&
+            dateToUnix(date) >= dateToUnix(startDate!)
+          ) {
             isStart = false;
           }
 
-          (onChange as RangeChange)({
-            startDate: isStart ? getStartOfDay(date) : sd,
-            endDate: !isStart ? getEndOfDay(date) : undefined,
-          });
+          if (isStart) {
+            (onChange as RangeChange)({
+              startDate: getStartOfDay(date),
+              endDate: undefined,
+            });
+          } else {
+            (onChange as RangeChange)({
+              startDate: startDate,
+              endDate: getEndOfDay(date),
+            });
+          }
         } else if (mode === 'multiple') {
           const safeDates = (state.dates as DateType[]) || [];
           const newDate = getStartOfDay(date);
