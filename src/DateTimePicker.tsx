@@ -216,6 +216,18 @@ const DateTimePicker = (
             isStart = false;
           }
 
+          if (
+            startDate &&
+            !endDate &&
+            dateToUnix(date) < dateToUnix(startDate!)
+          ) {
+            (onChange as RangeChange)({
+              startDate: getStartOfDay(date),
+              endDate: getEndOfDay(startDate),
+            });
+            return;
+          }
+
           if (isStart) {
             (onChange as RangeChange)({
               startDate: getStartOfDay(date),
